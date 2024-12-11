@@ -7,19 +7,39 @@ import javax.persistence.Id;
 
 @Entity
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private int age;
-    private double annualIncome;
-    private int creditScore;
-    private double existingDebts;
-    private String employmentStatus;
+    private int id; // Unique identifier for each customer
 
-    // Getters and setters
+    private String firstName; // Customer's first name
+    private String lastName; // Customer's last name
+    private String email; // Customer's email address
+    private int age; // Customer's age
+    private double annualIncome; // Customer's annual income
+    private int creditScore; // Customer's credit score
+    private double existingDebts; // Existing debts of the customer
+    private String employmentStatus; // Customer's employment status (e.g., "Employed", "Unemployed")
+
+    // Default constructor
+    public Customer() {
+    }
+
+    // Constructor to initialize the fields
+    public Customer(String firstName, String lastName, String email, int age, double annualIncome,
+                    int creditScore, double existingDebts, String employmentStatus) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+        this.annualIncome = annualIncome;
+        this.creditScore = creditScore;
+        this.existingDebts = existingDebts;
+        this.employmentStatus = employmentStatus;
+    }
+
+    // Getters and Setters for each field
+
     public int getId() {
         return id;
     }
@@ -90,5 +110,21 @@ public class Customer {
 
     public void setEmploymentStatus(String employmentStatus) {
         this.employmentStatus = employmentStatus;
+    }
+
+    // Optional: Override toString() method for debugging or logging purposes
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", annualIncome=" + annualIncome +
+                ", creditScore=" + creditScore +
+                ", existingDebts=" + existingDebts +
+                ", employmentStatus='" + employmentStatus + '\'' +
+                '}';
     }
 }

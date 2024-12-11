@@ -1,15 +1,14 @@
-// src/app/app-routing.module.ts (or wherever you define routes)
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoanEligibilityComponent } from '../pages/loan-eligibility/loan-eligibility.component'; // correct the path if needed
+import { LoanEligibilityComponent } from './loan-eligibility/loan-eligibility.component';
 
 const routes: Routes = [
-  { path: 'loan-eligibility', component: LoanEligibilityComponent },  // Add route for LoanEligibilityComponent
-  { path: '', redirectTo: '/loan-eligibility', pathMatch: 'full' },   // Default route redirects to loan-eligibility
+  { path: '', component: LoanEligibilityComponent }, // Default route
+  { path: 'loan-eligibility', component: LoanEligibilityComponent } // Explicit route
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],  // Use RouterModule to configure routes
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

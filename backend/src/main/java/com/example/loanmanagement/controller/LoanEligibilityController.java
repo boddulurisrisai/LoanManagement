@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/api/loans")
 public class LoanEligibilityController {
@@ -19,21 +17,17 @@ public class LoanEligibilityController {
         this.loanEligibilityService = loanEligibilityService;
     }
 
-    // Endpoint to check customer existence by first name and last name
-    @GetMapping("/check-customer")
-    public ResponseEntity<String> checkCustomerExistence(@RequestParam String firstName, @RequestParam String lastName) {
-        System.out.println("Received request to check customer with firstName: " + firstName + " and lastName: " + lastName);
+    // Endpoint to check loan eligibility via POST request
+    @PostMapping("/check-customer")
+    public ResponseEntity<String> checkLoanEligibility(@RequestBody Customer customer) {
+        // Checking loan eligibility
+        boolean isEligible = loanEligibilityService.checkLoanEligibility(customer);
 
-        Optional<Customer> customerOpt = loanEligibilityService.getCustomerByName(firstName, lastName);
-
-        if (customerOpt.isPresent()) {
-            System.out.println("Customer " + firstName + " " + lastName + " found in the database."); // Customer found in the database
-            Customer customer = customerOpt.get();
-            boolean isEligible = loanEligibilityService.checkLoanEligibility(customer);
-            return ResponseEntity.ok("Customer is " + (isEligible ? "eligible" : "not eligible") + " for the loan.");
+        // Return eligibility result
+        if (isEligible) {
+            return ResponseEntity.ok("Customer is eligible for the loan.");
         } else {
-            System.out.println("Customer " + firstName + " " + lastName + " not found in the database."); // Customer not found
-            return ResponseEntity.status(404).body("Customer not found. Not a member.");
+            return ResponseEntity.ok("Customer is not eligible for the loan.");
         }
     }
 }

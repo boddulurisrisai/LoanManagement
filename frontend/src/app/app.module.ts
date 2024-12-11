@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';  // AppComponent will be imported directly in the bootstrap
-import { LoanEligibilityComponent } from '../pages/loan-eligibility/loan-eligibility.component';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { CommonModule } from '@angular/common'; // Import CommonModule
+
+import { AppComponent } from './app.component';
+import { LoanEligibilityComponent } from './loan-eligibility/loan-eligibility.component';
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    LoanEligibilityComponent
+  ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    AppComponent,            // Import AppComponent here for bootstrapping
-    LoanEligibilityComponent // Import LoanEligibilityComponent here for usage in the app
+    FormsModule,  // Add FormsModule to imports
+    CommonModule  // Add CommonModule to imports
   ],
   providers: [],
   bootstrap: [AppComponent]

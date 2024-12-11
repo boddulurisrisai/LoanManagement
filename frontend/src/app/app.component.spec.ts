@@ -1,29 +1,23 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
-  });
+@Component({
+  selector: 'app-loan-eligibility',
+  templateUrl: './loan-eligibility.component.html',
+  styleUrls: ['./loan-eligibility.component.css']
+})
+export class LoanEligibilityComponent {
+  eligibilityResult: string | null = null;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  // Method to handle form submission
+  onSubmit(): void {
+    const income = parseFloat((<HTMLInputElement>document.getElementById('income')).value);
+    const creditScore = parseFloat((<HTMLInputElement>document.getElementById('creditScore')).value);
+    const loanAmount = parseFloat((<HTMLInputElement>document.getElementById('loanAmount')).value);
 
-  it(`should have the 'frontend' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('frontend');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend');
-  });
-});
+    if (income > 3000 && creditScore > 650 && loanAmount <= 100000) {
+      this.eligibilityResult = 'Congratulations, you are eligible for the loan!';
+    } else {
+      this.eligibilityResult = 'Sorry, you are not eligible for the loan.';
+    }
+  }
+}

@@ -1,0 +1,69 @@
+<div class="loan-eligibility-container">
+    <h1>Loan Eligibility Form</h1>
+    <form (ngSubmit)="onSubmit()" #loanForm="ngForm">
+        <!-- First Name -->
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName" required class="form-control"
+                placeholder="Enter first name" />
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" [(ngModel)]="lastName" required class="form-control"
+                placeholder="Enter last name" />
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" [(ngModel)]="age" required class="form-control"
+                placeholder="Enter age" />
+        </div>
+
+        <!-- Annual Income -->
+        <div class="form-group">
+            <label for="annualIncome">Annual Income</label>
+            <input type="number" id="annualIncome" name="annualIncome" [(ngModel)]="annualIncome" required
+                class="form-control" placeholder="Enter annual income" />
+        </div>
+
+        <!-- Debts -->
+        <div class="form-group">
+            <label for="debts">Total Debts</label>
+            <input type="number" id="debts" name="debts" [(ngModel)]="debts" required class="form-control"
+                placeholder="Enter total debts" />
+        </div>
+
+        <!-- Monthly Income -->
+        <div class="form-group">
+            <label for="income">Monthly Income</label>
+            <input type="number" id="income" name="income" [(ngModel)]="income" required class="form-control"
+                placeholder="Enter monthly income" />
+        </div>
+
+        <!-- Credit Score -->
+        <div class="form-group">
+            <label for="creditScore">Credit Score</label>
+            <input type="number" id="creditScore" name="creditScore" [(ngModel)]="creditScore" required
+                class="form-control" placeholder="Enter credit score" />
+        </div>
+
+        <!-- Loan Amount -->
+        <div class="form-group">
+            <label for="loanAmount">Loan Amount</label>
+            <input type="number" id="loanAmount" name="loanAmount" [(ngModel)]="loanAmount" required
+                class="form-control" placeholder="Enter loan amount" />
+        </div>
+
+        <button type="submit" [disabled]="!loanForm.form.valid" class="btn btn-primary">
+            Submit
+        </button>
+    </form>
+
+    <div *ngIf="eligibilityResult" class="result">
+        <h3>Your Eligibility Result:</h3>
+        <p>{{ eligibilityResult }}</p>
+    </div>
+</div>
