@@ -1,49 +1,54 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loan-eligibility',
-  standalone: true, // This is a standalone component
+  standalone: true,
   templateUrl: './loan-eligibility.component.html',
   styleUrls: ['./loan-eligibility.component.css'],
-  imports: [FormsModule, CommonModule] // Add FormsModule and CommonModule here
+  imports: [FormsModule, CommonModule],
 })
 export class LoanEligibilityComponent {
-  firstName: string | undefined;
-  lastName: string | undefined;
+  // Form data
+  firstName = '';
+  lastName = '';
   age: number | undefined;
   annualIncome: number | undefined;
   debts: number | undefined;
   income: number | undefined;
   creditScore: number | undefined;
-  loanAmount: number | undefined;
+  isEmployed = false; // Checkbox default
   eligibilityResult: string | undefined;
 
-  // Injecting HttpClient
+  // Inject HttpClient
   constructor(private http: HttpClient) {}
 
-  // Form submit method
+  // Submit form
   onSubmit() {
+    // Map the employment status
+    const employmentStatus = this.isEmployed ? 'Employed' : 'Unemployed';
+
+    // Prepare the customer data
     const customerData = {
       firstName: this.firstName,
       lastName: this.lastName,
       age: this.age,
       annualIncome: this.annualIncome,
-      existingDebts: this.debts,
-      income: this.income,
       creditScore: this.creditScore,
-      loanAmount: this.loanAmount,
-      employmentStatus: 'Employed', // You can add an employment status field if needed
+      existingDebts: this.debts,
+      employmentStatus: employmentStatus,
     };
 
-    // Sending POST request to backend
-    this.http.post<any>('/api/loans/check-customer', customerData)
-      .subscribe(response => {
+    // Send POST request to backend
+    this.http.post<any>('/api/loans/check-customer', customerData).subscribe(
+      (response) => {
         this.eligibilityResult = response;
-      }, error => {
+      },
+      (error) => {
         this.eligibilityResult = 'Error occurred while checking eligibility.';
-      });
+      }
+    );
   }
 }

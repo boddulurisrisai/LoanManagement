@@ -5,6 +5,7 @@ import com.example.loanmanagement.service.LoanEligibilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/loans")
@@ -19,15 +20,24 @@ public class LoanEligibilityController {
 
     // Endpoint to check loan eligibility via POST request
     @PostMapping("/check-customer")
-    public ResponseEntity<String> checkLoanEligibility(@RequestBody Customer customer) {
-        // Checking loan eligibility
-        boolean isEligible = loanEligibilityService.checkLoanEligibility(customer);
+    public ResponseEntity<String> checkLoanEligibility(@RequestBody Customer customerRequest) {
+        // Fetch customer from the database using firstName and lastName
+        Optional<Customer> existingCustomer = loanEligibilityService.getCustomerByName(
+                customerRequest.getFirstName(),
+                customerRequest.getLastName()
+        );
 
-        // Return eligibility result
-        if (isEligible) {
-            return ResponseEntity.ok("Customer is eligible for the loan.");
+        if (existingCustomer.isPresent()) {
+            // Use the details from the API request to perform the eligibility check
+            boolean isEligible = loanEligibilityService.checkLoanEligibility(customerRequest);
+            return ResponseEntity.ok(
+                    isEligible ? "Customer is eligible for the loan." : "Customer is not eligible for the loan."
+            );
         } else {
-            return ResponseEntity.ok("Customer is not eligible for the loan.");
+            // Customer not found in the database
+            return ResponseEntity.status(404).body("Customer not found in the database.");
         }
     }
+
+
 }

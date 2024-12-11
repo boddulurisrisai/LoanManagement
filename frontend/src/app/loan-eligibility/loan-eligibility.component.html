@@ -50,18 +50,17 @@
                 class="form-control" placeholder="Enter credit score" />
         </div>
 
-        <!-- Loan Amount -->
+        <!-- Employment Status -->
         <div class="form-group">
-            <label for="loanAmount">Loan Amount</label>
-            <input type="number" id="loanAmount" name="loanAmount" [(ngModel)]="loanAmount" required
-                class="form-control" placeholder="Enter loan amount" />
+            <input type="checkbox" id="employmentStatus" name="employmentStatus" [(ngModel)]="isEmployed" />
+            <label for="employmentStatus">Are you employed?</label>
         </div>
 
-        <button type="submit" [disabled]="!loanForm.form.valid" class="btn btn-primary">
-            Submit
-        </button>
+        <!-- Submit Button -->
+        <button type="submit" [disabled]="!loanForm.form.valid" class="btn btn-primary">Submit</button>
     </form>
 
+    <!-- Eligibility Result -->
     <div *ngIf="eligibilityResult" class="result">
         <h3>Your Eligibility Result:</h3>
         <p>{{ eligibilityResult }}</p>
