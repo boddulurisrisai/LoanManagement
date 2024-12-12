@@ -37,8 +37,8 @@ This project is a Loan Management System that helps manage customer loan applica
 ### Prerequisites
 
 - Node.js (latest version recommended)
-- Angular CLI
-- Java JDK (latest version recommended)
+- Angular 14
+- Java 11
 - Maven
 - MySQL Server
 
@@ -47,13 +47,13 @@ This project is a Loan Management System that helps manage customer loan applica
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-repository-url/loan-management-system.git
+   git clone https://github.com/boddulurisrisai/loan-management-system.git
    ```
 
 2. **Navigate to the frontend directory:**
 
    ```bash
-   cd loan-management-system/frontend
+   cd LoanManagement/frontend
    ```
 
 3. **Install the dependencies:**
@@ -78,7 +78,7 @@ This project is a Loan Management System that helps manage customer loan applica
 1. **Navigate to the backend directory:**
 
    ```bash
-   cd loan-management-system/backend
+   cd LoanManagement/backend/loan-eligibility
    ```
 
 2. **Install Maven dependencies:**
@@ -89,7 +89,7 @@ This project is a Loan Management System that helps manage customer loan applica
 
 3. **Configure the MySQL database:**
 
-   - Create a new database named `loan_management`.
+   - Import database named `sakila`.
    - Update the `application.properties` file with your MySQL database credentials.
 
 4. **Run the Spring Boot application:**
@@ -149,7 +149,7 @@ Use Postman to test the API endpoints.
 
 Here is a screenshot of the Loan Eligibility Form:
 
-![Loan Eligibility Form Screenshot](screenshots/Screenshot1.png)
 ![Loan Eligibility Form Screenshot](screenshots/Screenshot2.png)
+![Loan Eligibility Form Screenshot](screenshots/Screenshot1.png)
 ![Loan Eligibility Form Screenshot](screenshots/Screenshot3.png)
 ![Loan Eligibility Form Screenshot](screenshots/Screenshot4.png)
