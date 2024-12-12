@@ -143,13 +143,13 @@ This project is a Loan Management System that helps manage customer loan applica
 
 ## Testing
 
-Use Postman to test the API endpoints. Import the API collection provided in the `postman_collection.json` file (if available).
+Use Postman to test the API endpoints.
 
 ## Loan Eligibility Form
 
 Here is a screenshot of the Loan Eligibility Form:
 
-![Loan Eligibility Form Screenshot](screenshots/Screenshot1.pngpng)
-![Loan Eligibility Form Screenshot](screenshots/Screenshot2.pngpng)
-![Loan Eligibility Form Screenshot](screenshots/Screenshot3.pngpng)
-![Loan Eligibility Form Screenshot](screenshots/Screenshot4.pngpng)
+![Loan Eligibility Form Screenshot](screenshots/Screenshot1.png)
+![Loan Eligibility Form Screenshot](screenshots/Screenshot2.png)
+![Loan Eligibility Form Screenshot](screenshots/Screenshot3.png)
+![Loan Eligibility Form Screenshot](screenshots/Screenshot4.png)
