@@ -101,7 +101,7 @@ This project is a Loan Management System that helps manage customer loan applica
 
 - **URL:** `/api/loans/check-customer`
 - **Method:** `POST`
-- **Description:** Checks the loan eligibility of a customer.
+- **Description:** Checks the loan eligibility of a customer. If the customer is not present in the database, the response will indicate that the customer is not in the database. If the customer is present, the backend will check the provided details to determine whether the customer is eligible for a personal loan of $5000.
 - **Request Body:**
     ```json
     {
@@ -114,10 +114,22 @@ This project is a Loan Management System that helps manage customer loan applica
         "employmentStatus": "Employed"
     }
     ```
-- **Response:**
+- **Response (Customer Not in Database):**
+    ```json
+    {
+        "message": "Customer not found in database."
+    }
+    ```
+- **Response (Customer Eligible for Loan):**
     ```json
     {
         "message": "Eligible for loan."
+    }
+    ```
+- **Response (Customer Not Eligible for Loan):**
+    ```json
+    {
+        "message": "Not eligible for loan."
     }
     ```
 
