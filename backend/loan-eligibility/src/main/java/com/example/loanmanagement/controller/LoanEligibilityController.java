@@ -40,7 +40,7 @@ public class LoanEligibilityController {
                 );
             } else {
                 // Customer not found in the database
-                return ResponseEntity.status(404).body("Customer not found in the database.");
+                return ResponseEntity.status(404).body("Customer is not found in the database.");
             }
         } catch (Exception e) {
             // Log the error
