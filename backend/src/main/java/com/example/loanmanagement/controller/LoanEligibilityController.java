@@ -5,10 +5,12 @@ import com.example.loanmanagement.service.LoanEligibilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/loans")
+@CrossOrigin(origins = "http://localhost:4200") // Allow CORS for this controller from frontend
 public class LoanEligibilityController {
 
     private final LoanEligibilityService loanEligibilityService;
@@ -20,24 +22,30 @@ public class LoanEligibilityController {
 
     // Endpoint to check loan eligibility via POST request
     @PostMapping("/check-customer")
-    public ResponseEntity<String> checkLoanEligibility(@RequestBody Customer customerRequest) {
-        // Fetch customer from the database using firstName and lastName
-        Optional<Customer> existingCustomer = loanEligibilityService.getCustomerByName(
-                customerRequest.getFirstName(),
-                customerRequest.getLastName()
-        );
+    @CrossOrigin(origins = "http://localhost:4200") // Allow CORS for this controller from frontend
 
-        if (existingCustomer.isPresent()) {
-            // Use the details from the API request to perform the eligibility check
-            boolean isEligible = loanEligibilityService.checkLoanEligibility(customerRequest);
-            return ResponseEntity.ok(
-                    isEligible ? "Customer is eligible for the loan." : "Customer is not eligible for the loan."
+    public ResponseEntity<String> checkLoanEligibility(@RequestBody Customer customerRequest) {
+        try {
+            // Fetch customer from the database using firstName and lastName
+            Optional<Customer> existingCustomer = loanEligibilityService.getCustomerByName(
+                    customerRequest.getFirstName(),
+                    customerRequest.getLastName()
             );
-        } else {
-            // Customer not found in the database
-            return ResponseEntity.status(404).body("Customer not found in the database.");
+
+            if (existingCustomer.isPresent()) {
+                // Use the details from the API request to perform the eligibility check
+                boolean isEligible = loanEligibilityService.checkLoanEligibility(customerRequest);
+                return ResponseEntity.ok(
+                        isEligible ? "Customer is eligible for the loan." : "Customer is not eligible for the loan."
+                );
+            } else {
+                // Customer not found in the database
+                return ResponseEntity.status(404).body("Customer not found in the database.");
+            }
+        } catch (Exception e) {
+            // Log the error
+            e.printStackTrace();  // Or use a logger like LoggerFactory.getLogger(LoanEligibilityController.class).error(e.getMessage(), e);
+            return ResponseEntity.status(500).body("Error occurred while checking eligibility.");
         }
     }
-
-
 }
