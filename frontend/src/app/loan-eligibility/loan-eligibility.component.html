@@ -6,6 +6,7 @@
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName" required class="form-control"
                 placeholder="Enter first name" />
+            <div *ngIf="loanForm.submitted && !firstName" class="error-message">First name is required.</div>
         </div>
 
         <!-- Last Name -->
@@ -13,6 +14,7 @@
             <label for="lastName">Last Name</label>
             <input type="text" id="lastName" name="lastName" [(ngModel)]="lastName" required class="form-control"
                 placeholder="Enter last name" />
+            <div *ngIf="loanForm.submitted && !lastName" class="error-message">Last name is required.</div>
         </div>
 
         <!-- Age -->
@@ -20,6 +22,7 @@
             <label for="age">Age</label>
             <input type="number" id="age" name="age" [(ngModel)]="age" required class="form-control"
                 placeholder="Enter age" />
+            <div *ngIf="loanForm.submitted && !age" class="error-message">Age is required.</div>
         </div>
 
         <!-- Annual Income -->
@@ -27,6 +30,7 @@
             <label for="annualIncome">Annual Income</label>
             <input type="number" id="annualIncome" name="annualIncome" [(ngModel)]="annualIncome" required
                 class="form-control" placeholder="Enter annual income" />
+            <div *ngIf="loanForm.submitted && !annualIncome" class="error-message">Annual income is required.</div>
         </div>
 
         <!-- Debts -->
@@ -34,15 +38,15 @@
             <label for="debts">Total Debts</label>
             <input type="number" id="debts" name="debts" [(ngModel)]="debts" required class="form-control"
                 placeholder="Enter total debts" />
+            <div *ngIf="loanForm.submitted && !debts" class="error-message">Debts are required.</div>
         </div>
-
-
 
         <!-- Credit Score -->
         <div class="form-group">
             <label for="creditScore">Credit Score</label>
             <input type="number" id="creditScore" name="creditScore" [(ngModel)]="creditScore" required
                 class="form-control" placeholder="Enter credit score" />
+            <div *ngIf="loanForm.submitted && !creditScore" class="error-message">Credit score is required.</div>
         </div>
 
         <!-- Employment Status -->

@@ -45,55 +45,63 @@ This project is a Loan Management System that helps manage customer loan applica
 ### Frontend
 
 1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-repository-url/loan-management-system.git
-    ```
+
+   ```bash
+   git clone https://github.com/your-repository-url/loan-management-system.git
+   ```
 
 2. **Navigate to the frontend directory:**
-    ```bash
-    cd loan-management-system/frontend
-    ```
+
+   ```bash
+   cd loan-management-system/frontend
+   ```
 
 3. **Install the dependencies:**
-    ```bash
-    npm install
-    ```
+
+   ```bash
+   npm install
+   ```
 
 4. **Run the Angular application:**
-    ```bash
-    ng serve
-    ```
+
+   ```bash
+   ng serve
+   ```
 
 5. **Open your browser and navigate to:**
-    ```
-    http://localhost:4200
-    ```
+   ```
+   http://localhost:4200
+   ```
 
 ### Backend
 
 1. **Navigate to the backend directory:**
-    ```bash
-    cd loan-management-system/backend
-    ```
+
+   ```bash
+   cd loan-management-system/backend
+   ```
 
 2. **Install Maven dependencies:**
-    ```bash
-    mvn clean install
-    ```
+
+   ```bash
+   mvn clean install
+   ```
 
 3. **Configure the MySQL database:**
-    - Create a new database named `loan_management`.
-    - Update the `application.properties` file with your MySQL database credentials.
+
+   - Create a new database named `loan_management`.
+   - Update the `application.properties` file with your MySQL database credentials.
 
 4. **Run the Spring Boot application:**
-    ```bash
-    mvn spring-boot:run
-    ```
+
+   ```bash
+   mvn spring-boot:run
+   ```
 
 5. **The backend will be available at:**
-    ```
-    http://localhost:8080
-    ```
+   ```
+   http://localhost:8080
+   ```
 
 ## API Endpoints
 
@@ -103,37 +111,45 @@ This project is a Loan Management System that helps manage customer loan applica
 - **Method:** `POST`
 - **Description:** Checks the loan eligibility of a customer. If the customer is not present in the database, the response will indicate that the customer is not in the database. If the customer is present, the backend will check the provided details to determine whether the customer is eligible for a personal loan of $5000.
 - **Request Body:**
-    ```json
-    {
-        "firstName": "John",
-        "lastName": "Doe",
-        "age": 30,
-        "annualIncome": 75000,
-        "creditScore": 700,
-        "existingDebts": 10000,
-        "employmentStatus": "Employed"
-    }
-    ```
+  ```json
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "age": 30,
+    "annualIncome": 75000,
+    "creditScore": 700,
+    "existingDebts": 10000,
+    "employmentStatus": "Employed"
+  }
+  ```
 - **Response (Customer Not in Database):**
-    ```json
-    {
-        "message": "Customer not found in database."
-    }
-    ```
+  ```json
+  {
+    "message": "Customer not found in database."
+  }
+  ```
 - **Response (Customer Eligible for Loan):**
-    ```json
-    {
-        "message": "Eligible for loan."
-    }
-    ```
+  ```json
+  {
+    "message": "Eligible for loan."
+  }
+  ```
 - **Response (Customer Not Eligible for Loan):**
-    ```json
-    {
-        "message": "Not eligible for loan."
-    }
-    ```
+  ```json
+  {
+    "message": "Not eligible for loan."
+  }
+  ```
 
 ## Testing
 
 Use Postman to test the API endpoints. Import the API collection provided in the `postman_collection.json` file (if available).
 
+## Loan Eligibility Form
+
+Here is a screenshot of the Loan Eligibility Form:
+
+![Loan Eligibility Form Screenshot](screenshots/Screenshot1.pngpng)
+![Loan Eligibility Form Screenshot](screenshots/Screenshot2.pngpng)
+![Loan Eligibility Form Screenshot](screenshots/Screenshot3.pngpng)
+![Loan Eligibility Form Screenshot](screenshots/Screenshot4.pngpng)

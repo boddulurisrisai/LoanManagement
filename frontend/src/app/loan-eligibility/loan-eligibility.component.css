@@ -1,60 +1,50 @@
-/* loan-eligibility.component.css */
-
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #333333;
-    /* Light black background for the page */
+    background-color: #f0f2f5;
     margin: 0;
     padding: 0;
-    color: #ffffff;
-    /* Set text color to white for better readability */
+    color: #333;
 }
 
 .loan-eligibility-container {
-    max-width: 600px;
+    max-width: 700px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 30px;
     background-color: #ffffff;
-    /* White background for the container */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    color: #000000;
-    /* Black text color inside the container */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    color: #333;
 }
 
 h1 {
     text-align: center;
-    color: #333333;
-    /* Dark grey heading color */
-    margin-bottom: 20px;
+    color: #a83b0d;
+    margin-bottom: 30px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #333333;
-    /* Dark grey color for labels */
+    color: #333;
 }
 
 input[type="text"],
 input[type="number"],
 input[type="checkbox"] {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    background-color: #f8f9fa;
-    /* Light grey background for inputs */
-    color: #000000;
-    /* Black text color for inputs */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 8px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
 }
 
 input[type="checkbox"] {
@@ -64,24 +54,24 @@ input[type="checkbox"] {
 
 input[type="text"]:focus,
 input[type="number"]:focus {
-    border-color: #80bdff;
+    border-color: #0056b3;
     outline: none;
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #007bff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 button:disabled {
-    background-color: #6c757d;
+    background-color: #cccccc;
     cursor: not-allowed;
 }
 
@@ -90,25 +80,22 @@ button:hover:not(:disabled) {
 }
 
 .result {
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 30px;
+    padding: 20px;
     background-color: #e9ecef;
     border-left: 5px solid #007bff;
-    border-radius: 4px;
-    color: #000000;
-    /* Black text color for result */
+    border-radius: 5px;
+    color: #333;
 }
 
 .result h3 {
     margin-top: 0;
-    color: #333333;
-    /* Dark grey color for result heading */
+    color: #0056b3;
 }
 
-.result p {
-    margin: 0;
-    color: #495057;
-    /* Dark grey color for result text */
+.error-message {
+    color: #ff0000;
+    font-size: 12px;
 }
 
 .employment-status {
@@ -118,7 +105,5 @@ button:hover:not(:disabled) {
 
 .employment-status label {
     margin-left: 10px;
-    /* Space between checkbox and label */
     margin-bottom: 0;
-    /* Remove bottom margin for better alignment */
 }
